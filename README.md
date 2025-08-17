@@ -12,8 +12,8 @@ A time manipulation toolkit built on chrono, providing convenient iterators and 
 ## Features
 
 Currently implemented features:
-- NaiveDateTime range iteration (`NaiveDatetimeRangeIterator`)
-- NaiveDateTime iteration (`NaiveDatetimeIterator`)
+- NaiveDateTime range iteration (`NaiveDatetimeRangeIterator`) with forward/reverse support
+- NaiveDateTime iteration (`NaiveDatetimeIterator`) with forward/reverse support  
 - Basic time range calculations
 
 Want to see something added? Open an issue with your feature request!
@@ -39,6 +39,13 @@ let step = Duration::hours(1);
 let mut iter = NaiveDatetimeRangeIterator::new(start, end, step).unwrap();
 for (range_start, range_end) in iter {
     println!("Range: {} to {}", range_start, range_end);
+}
+
+// Reverse iteration example
+let step = Duration::hours(-1); // Negative step for reverse iteration
+let mut reverse_iter = NaiveDatetimeRangeIterator::new(start, end, step).unwrap();
+for (range_start, range_end) in reverse_iter {
+    println!("Reverse range: {} to {}", range_start, range_end);
 }
 ```
 

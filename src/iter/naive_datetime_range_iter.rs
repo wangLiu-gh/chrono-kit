@@ -7,8 +7,9 @@ use chrono::{Duration, NaiveDateTime};
 /// This iterator yields tuples of `(start, end)` datetimes where each range
 /// represents a time period between consecutive steps.
 ///
-/// # Example
+/// # Examples
 ///
+/// Forward iteration:
 /// ```
 /// use chrono_kit::iter::NaiveDatetimeRangeIterator;
 /// use chrono::{NaiveDateTime, Duration};
@@ -20,6 +21,20 @@ use chrono::{Duration, NaiveDateTime};
 /// let mut iter = NaiveDatetimeRangeIterator::new(start, end, step).unwrap();
 /// assert_eq!(iter.next(), Some((start, start + step)));
 /// assert_eq!(iter.next(), Some((start + step, end)));
+/// ```
+///
+/// Reverse iteration:
+/// ```
+/// use chrono_kit::iter::NaiveDatetimeRangeIterator;
+/// use chrono::{NaiveDateTime, Duration};
+///
+/// let start = NaiveDateTime::parse_from_str("2023-01-01 00:00:00", "%Y-%m-%d %H:%M:%S").unwrap();
+/// let end = NaiveDateTime::parse_from_str("2023-01-03 00:00:00", "%Y-%m-%d %H:%M:%S").unwrap();
+/// let step = Duration::days(-1);
+///
+/// let mut iter = NaiveDatetimeRangeIterator::new(start, end, step).unwrap();
+/// assert_eq!(iter.next(), Some((end + step, end)));
+/// assert_eq!(iter.next(), Some((start, end + step)));
 /// ```
 pub struct NaiveDatetimeRangeIterator {
     datetime_iter: NaiveDatetimeIterator,
