@@ -1,4 +1,4 @@
-name: Rust CI
+name: codecov
 
 on:
   push:
@@ -11,22 +11,17 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  test:
+  coverage:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: actions-rs/toolchain@v1
-      with:
-        profile: minimal
-        toolchain: stable
-        override: true
-    - name: Run tests
-      run: cargo test --verbose
     - name: Generate coverage
       run: |
+        mkdir -p target/tarpaulin/
         cargo install cargo-tarpaulin
         cargo tarpaulin --out Xml --output-dir target/tarpaulin/
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
       with:
         file: target/tarpaulin/cobertura.xml
+        token: ${{ secrets.CODECOV_TOKEN }}
