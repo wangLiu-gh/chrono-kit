@@ -4,7 +4,7 @@
 [![Crates.io](https://img.shields.io/crates/v/chrono-kit)](https://crates.io/crates/chrono-kit)
 [![Documentation](https://docs.rs/chrono-kit/badge.svg)](https://docs.rs/chrono-kit)
 [![License](https://img.shields.io/crates/l/chrono-kit)](LICENSE)
-[![CI Status](https://github.com/wangLiu-gh/chrono-kit/workflows/Rust/badge.svg)](https://github.com/wangLiu-gh/chrono-kit/actions)
+[![CI Test Status](https://github.com/wangLiu-gh/chrono-kit/actions/workflows/test.yml/badge.svg)](https://github.com/wangLiu-gh/chrono-kit/actions)
 [![Coverage](https://codecov.io/gh/wangLiu-gh/chrono-kit/branch/main/graph/badge.svg)](https://codecov.io/gh/wangLiu-gh/chrono-kit)
 
 A time manipulation toolkit built on chrono, providing convenient iterators and utilities for working with dates and times.
